@@ -343,31 +343,57 @@ article h3 {
    ABOUT
 ========================= */
 
-#skills1 {
-    background-color: #111827;
-}
-
 #about {
 
     background:white;
 
-    padding:50px;
+    padding:60px 20px;
 
     border-radius:25px;
 
-    text-align:left;
+    text-align:center;
 
 }
 
-#about2 {
 
-    background:white;
+.about-intro {
 
-    padding:50px;
+    max-width:700px;
 
-    border-radius:25px;
+    margin:20px auto 40px;
 
-    text-align:right;
+    line-height:1.6;
+
+}
+
+
+.benefits {
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+}
+
+
+.benefit-card {
+
+    background:#f9fafb;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    min-height:160px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
 
 }
 

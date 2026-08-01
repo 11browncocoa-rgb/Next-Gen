@@ -77,40 +77,56 @@ if (startButton) {
 
 
     // =========================
-    // CONTACT FORM
-    // =========================
+// CONTACT FORM
+// =========================
 
-    const form = document.querySelector("#contact-form");
+const form = document.querySelector("#contact-form");
 
+if (form) {
 
-form.addEventListener("submit", function(event){
+    form.addEventListener("submit", function(event) {
 
-    event.preventDefault();
+        event.preventDefault();
 
+        // Collect selected courses
+        const selectedCourses = Array.from(
+            document.querySelectorAll('input[name="course"]:checked')
+        ).map(course => course.value);
 
-    emailjs.sendForm(
-        "service_72aa0we",
-        "template_7zy8lta",
-        this
-    )
-    .then(() => {
+        // Collect selected days
+        const selectedDays = Array.from(
+            document.querySelectorAll('input[name="days"]:checked')
+        ).map(day => day.value);
 
-        alert(
-        "Message sent successfully! We'll contact you soon."
-        );
+        // Put them into hidden fields
+        document.querySelector("#courses-hidden").value =
+            selectedCourses.join(", ");
 
-        form.reset();
+        document.querySelector("#days-hidden").value =
+            selectedDays.join(", ");
 
-    })
-    .catch((error)=>{
+        emailjs.sendForm(
+            "service_72aa0we",
+            "template_7zy8lta",
+            this
+        )
+        .then(() => {
 
-        alert(
-        "Something went wrong. Please try again."
-        );
+            alert("Message sent successfully! We'll contact you soon.");
 
-        console.log(error);
+            form.reset();
+
+        })
+        .catch((error) => {
+
+            alert("Something went wrong. Please try again.");
+
+            console.log(error);
+
+        });
+
     });
 
-});
+}
 
 });
